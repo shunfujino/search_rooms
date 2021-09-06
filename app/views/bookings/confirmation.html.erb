@@ -1,0 +1,32 @@
+<div class="container reservations-new">
+  <div class="row">
+    <div class="col-6 offset-3">
+      <div class="reservations-new-nav">
+        <h4 class="reservations-new-check-content">予約内容確認</h4>
+        <h5 class="price-icon"><%= @room.price %> / 日</h5>
+        <div class="reservations-new-date-select">
+          <form class="new_reservation" id="new_reservation" action="reservations" accept-charset="UTF-8" method="post">
+            <input type="hidden" value="<%= params[:room_id] %>" name="room_id" id="room_id">
+            <input type="hidden" value="<%= params[:guest_id] %>" name="guest_id" id="user_id">
+            <input type="hidden" value="<%= params[:count_guest] %>" name="count_guest" id="count_guest">
+            <label for="checkin">開始日</label>
+            <input class="form-control mb-4" readonly="readonly" type="date" value="<%= params[:checkin] %>"
+              name="checkin" id="checkin">
+            <label for="checkout">終了日</label>
+            <input class="form-control mb-4" readonly="readonly" type="date" value="<%= params[:checkout] %>"
+              name="checkout" id="checkout">
+            <h6 class="reservations-new-check-content">使用日数 : <%= @stay %>日</h6>
+            <h6 class="reservations-new-check-content">人数 : <%= params[:count_guest] %>人</h6>
+            <label for="total_amount">合計金額</label>
+            <input class="form-control mb-4" readonly="readonly" type="text" value="<%= @total_amount %>"
+              name="total_amount" id="total_amount">
+            <p class="reservations-new-check-content">上記内容でよろしければ「予約を確定」を押してください</p>
+            <input type="submit" name="commit" value="予約を確定" class="btn btn-primary form-control my-3"
+              data-disable-with="予約を確定">
+            <a class="btn btn-secondary form-control" href="/rooms/<%= params[:room_id] %>">ルーム詳細に戻る</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

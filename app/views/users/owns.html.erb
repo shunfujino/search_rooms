@@ -1,0 +1,26 @@
+<div class="container-fiuld room-posts">
+  <h4 class="pb-4">登録済みルーム一覧</h4>
+  <table>
+    <thead>
+      <tr align="center">
+        <th>ルーム画像</th>
+        <th>ルーム名</th>
+        <th>ルーム紹介</th>
+        <th>料金</th>
+        <th>作成日</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @current_user.owns.each do |own|%>
+      <tr>
+        <td><a href="/rooms/<%= own.id %>">
+            <img class="room-posts-image" src="<%= "/room_photos/#{own.room_photo}" %>"></a></td>
+        <td class="posts-name"><a href="/rooms/<%= own.id %>"><%= own.room_name %></a></td>
+        <td class="posts-content"><%= own.room_info %></td>
+        <td class="price-icon"><%= own.price %></td>
+        <td><%= own.created_at %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

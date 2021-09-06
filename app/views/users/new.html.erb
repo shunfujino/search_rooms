@@ -1,0 +1,32 @@
+<div class="container device">
+  <div class="device_frame">
+    <p class="my-4">新しいアカウントを作成</p>
+    <div class="device_inner">
+      <%= form_with url:users_create_path,method: :post, local: true do |form|  %>
+      <% @user.errors.full_messages.each do |message| %>
+      <div class="error-message">
+        <%= message %>
+      </div>
+      <% end %>
+      <div class="field form-row">
+        <div class="col-2 required-b pt-2"></div>
+        <%= form.text_field :user_name, class: 'form-control col-10 px-2', placeholder: 'ユーザー名' %>
+      </div>
+      <div class="field form-row">
+        <div class="col-2 required-b pt-2"></div>
+        <%= form.email_field :email, class: 'form-control col-10 px-2', placeholder: 'メールアドレス' %>
+      </div>
+      <div class="field form-row">
+        <div class="col-2 required-b pt-2"></div>
+        <%= form.password_field :password, class: 'form-control col-10 px-2', placeholder: 'パスワード' %>
+      </div>
+      <div class="field form-row">
+        <div class="col-2 required-b pt-2"></div>
+        <%= form.password_field :password_confirmation, class: 'form-control col-10 px-2', placeholder: 'パスワード確認' %>
+      </div>
+      <%= form.submit "新しいアカウントを作成", class: "form-control btn btn-primary" %>
+      <% end %>
+      <a href="/login">すでにアカウントをお持ちの方はログイン</a><br>
+    </div>
+  </div>
+</div>

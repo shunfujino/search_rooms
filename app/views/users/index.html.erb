@@ -1,0 +1,11 @@
+ユーザー一覧
+<% @users.each do |user| %>
+<div class="users-index-item">
+  <div class="user-right">
+    <%= link_to(user.user_name, "/users/#{user.id}/profile") %>
+    <%= user.password %>
+    <%= user.email %>
+    <img src="<%= "/user_icons/#{user.user_icon}" %>">
+  </div>
+</div>
+<% end %>
