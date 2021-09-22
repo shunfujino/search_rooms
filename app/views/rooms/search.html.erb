@@ -1,0 +1,24 @@
+<div class="row">
+  <% @rooms.each do |room| %>
+  <div class="col-sm-6 col-lg-4 col-xl-3">
+    <div class="room-frame-inner">
+      <a href="/rooms/<%= room.id %>">
+        <div class="room-image-out">
+          <img class="room-image" src="<%= "/room_photos/#{room.room_photo}" %>" alt="部屋画像">
+        </div>
+      </a>
+    </div>
+    <div class="room-profile">
+      <p class="room-profile-name"><%= room.room_name %></p>
+      <p class="room-profile-city"><%= room.address %></p>
+      <p class="room-profile-price price-icon"><%= room.price %></p>
+    </div>
+    </a>
+  </div>
+  <% end %>
+</div>
+
+
+
+
+</div>

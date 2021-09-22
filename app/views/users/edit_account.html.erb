@@ -1,0 +1,36 @@
+<div class="container device">
+  <div class="device_frame">
+    <h2 class="mb-3">アカウント編集</h2>
+    <div class="device_inner">
+      <div class="device_inner">
+        <%= form_with model:@user, url: "/users/#{@current_user.id}/update_account" ,method: :post, local: true do |form|  %>
+        <% @user.errors.full_messages.each do |message| %>
+        <div class="error-message">
+          <%= message %>
+        </div>
+        <% end %>
+        <div class="field">
+          <label for="email">メールアドレス</label>
+          <%= form.email_field :email, class: 'form-control',id:"email", placeholder: 'メールアドレス', value: "#{@current_user.email}" %>
+        </div>
+        <div class="field">
+          <label for="password">変更後パスワード（変更する場合のみ入力）</label>
+          <%= form.password_field :password, class: 'form-control', id:"password", placeholder: 'パスワード' %>
+        </div>
+        <div class="field">
+          <label for="password_confirmation">パスワード確認用（変更する場合のみ入力）</label>
+          <%= form.password_field :password_confirmation, class: 'form-control', id:"password_confirmation", placeholder: 'パスワード' %>
+        </div>
+        <div class="field">
+          <label for="current_password">現在のパスワード</label>
+          <%= form.password_field :current_password, class: 'form-control', id:"current_password", placeholder: 'パスワード確認' %>
+        </div>
+        <%= form.submit "更新", class: "form-control btn btn-primary" %>
+        <% end %>
+        <div class="actions">
+          <a class="btn btn-outline-secondary form-control" href="/users/<%= @current_user.id %>/account">戻る</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
